@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,168 +26,98 @@
       }
 
       body {
-        font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo,
-          Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
       }
 
       .font-display {
-        font-family: "Big Shoulders", "IBM Plex Mono", sans-serif;
+        font-family: "Big Shoulders", "Inter", sans-serif;
       }
 
-      .marquee-track {
-        overflow: hidden;
+      .site-header {
+        color: #ffffff;
+        background: linear-gradient(
+          180deg,
+          rgba(11, 17, 32, 0.65) 0%,
+          rgba(11, 17, 32, 0) 100%
+        );
       }
 
-      .marquee {
+      .site-header .nav-link {
         display: inline-flex;
         align-items: center;
-        gap: 4rem;
-        animation: marquee 15s linear infinite;
-        white-space: nowrap;
+        height: 100%;
+        gap: 6px;
+        padding-bottom: 4px;
+        border-bottom: 2px solid transparent;
+        color: inherit;
+        transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
       }
 
-      .marquee-item {
-        display: inline-flex;
-        align-items: center;
-        gap: 50px;
-        padding: 0 1.5rem;
+      .site-header .nav-link svg {
+        width: 20px;
+        height: 20px;
       }
 
-      @keyframes marquee {
-        0% {
-          transform: translateX(0);
-        }
+      .site-header .nav-link:hover {
+        color: #7ea6ff;
+        border-color: #7ea6ff;
+      }
 
-        100% {
-          transform: translateX(-100%);
-        }
+      .site-header .nav-link.active {
+        color: #7ea6ff;
+        border-color: #7ea6ff;
+      }
+
+      .site-header.header-solid {
+        background: rgba(255, 255, 255, 0.95);
+        color: #0b1120;
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+      }
+
+      .site-header.header-solid .nav-link {
+        color: #0f172a;
+      }
+
+      .site-header.header-solid .nav-link:hover,
+      .site-header.header-solid .nav-link:focus {
+        color: #0000ff;
+        border-color: #0000ff;
+      }
+
+      .site-header.header-solid .nav-link.active {
+        color: #0000ff;
+        border-color: #0000ff;
+      }
+
+      .hero-gradient {
+        background: linear-gradient(
+          180deg,
+          rgba(5, 7, 15, 0.85) 0%,
+          rgba(5, 7, 15, 0.4) 38%,
+          rgba(5, 7, 15, 0.9) 100%
+        );
       }
     </style>
   </head>
-  <body>
-    <div class="relative h-6 bg-[#0000FF] text-sm font-normal uppercase text-white">
-      <div class="marquee-track h-full">
-        <div class="marquee h-full">
-          <span class="marquee-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-sparkles-icon lucide-sparkles"
-              aria-hidden="true"
-            >
-              <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
-              <path d="M20 2v4" />
-              <path d="M22 4h-4" />
-              <circle cx="4" cy="20" r="2" />
-            </svg>
-            <span>WELCOME TO JLX STONES</span>
-          </span>
-          <span class="marquee-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-sparkles-icon lucide-sparkles"
-              aria-hidden="true"
-            >
-              <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
-              <path d="M20 2v4" />
-              <path d="M22 4h-4" />
-              <circle cx="4" cy="20" r="2" />
-            </svg>
-            <span>WELCOME TO JLX STONES</span>
-          </span>
-          <span class="marquee-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-sparkles-icon lucide-sparkles"
-              aria-hidden="true"
-            >
-              <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
-              <path d="M20 2v4" />
-              <path d="M22 4h-4" />
-              <circle cx="4" cy="20" r="2" />
-            </svg>
-            <span>WELCOME TO JLX STONES</span>
-          </span>
-          <span class="marquee-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-sparkles-icon lucide-sparkles"
-              aria-hidden="true"
-            >
-              <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
-              <path d="M20 2v4" />
-              <path d="M22 4h-4" />
-              <circle cx="4" cy="20" r="2" />
-            </svg>
-            <span>WELCOME TO JLX STONES</span>
-          </span>
+  <body class="bg-white text-[#0F172A]">
+    <header
+      id="siteHeader"
+      class="site-header fixed inset-x-0 top-0 z-40 px-4 py-6 transition-all duration-500 md:px-10"
+    >
+      <div class="flex h-[48px] items-center justify-between">
+        <div class="font-display text-[24px] font-bold uppercase leading-[26px] md:text-[32px] md:leading-[30px]">
+          JLX GEMSTONES AND CONSULTANTS
         </div>
-      </div>
-    </div>
-    <header class="relative mt-[25px] mb-[25px] flex h-[30px] items-center justify-between px-4 md:px-10">
-      <div class="font-display text-[24px] font-bold uppercase leading-[26px] md:text-[32px] md:leading-[30px]">
-        JLX GEMSTONES AND CONSULTANTS
-      </div>
-      <button
-        id="menuToggle"
-        class="flex h-full items-center gap-2 text-sm font-medium uppercase text-[#0000FF] md:hidden"
-        aria-label="Toggle navigation"
-        aria-expanded="false"
-      >
-        Menu
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+        <button
+          id="menuToggle"
+          class="menu-toggle flex h-full items-center gap-2 text-sm font-bold uppercase text-current md:hidden"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
         >
-          <line x1="4" x2="20" y1="6" y2="6" />
-          <line x1="4" x2="20" y1="12" y2="12" />
-          <line x1="4" x2="20" y1="18" y2="18" />
-        </svg>
-      </button>
-      <nav class="hidden h-full items-center gap-[18px] text-base font-semibold uppercase md:flex">
-        <a class="flex h-full items-center border-b-2 border-b-[#0000FF] pb-1 text-[#0000FF]" href="#home">Home</a>
-        <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="about.html">About Us</a>
-        <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="#stones-gallery">Stones</a>
-        <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="#contact-section">Contact Us</a>
-        <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="track.html">Track
+          Menu
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -198,20 +128,39 @@
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="lucide lucide-search-icon lucide-search"
-            aria-hidden="true"
           >
-            <path d="m21 21-4.34-4.34" />
-            <circle cx="11" cy="11" r="8" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="18" y2="18" />
           </svg>
-        </a>
-       
-  
-      </nav>
+        </button>
+        <nav class="hidden h-full items-center gap-[18px] text-base font-bold uppercase md:flex font-display">
+          <a class="nav-link active" href="#home">Home</a>
+          <a class="nav-link" href="about.html">About Us</a>
+          <a class="nav-link" href="#stones-gallery">Stones</a>
+          <a class="nav-link" href="#contact-section">Contact Us</a>
+          <a class="nav-link" href="track.html">
+            Track
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m21 21-4.34-4.34" />
+              <circle cx="11" cy="11" r="8" />
+            </svg>
+          </a>
+        </nav>
+      </div>
     </header>
     <div
       id="mobileMenuOverlay"
-      class="fixed inset-0 z-30 hidden bg-black/60 opacity-0 backdrop-blur-sm transition-opacity duration-300 md:hidden"
+      class="fixed inset-0 z-50 hidden bg-black/60 opacity-0 backdrop-blur-sm transition-opacity duration-300 md:hidden"
     >
       <div
         id="mobileMenuPanel"
@@ -242,13 +191,13 @@
             </svg>
           </button>
         </div>
-        <nav class="flex flex-1 flex-col justify-between px-6 py-8 text-base font-semibold uppercase text-neutral-900">
+        <nav class="flex flex-1 flex-col justify-between px-6 py-8 text-base font-semibold uppercase text-neutral-900 font-display">
           <div class="space-y-5">
             <a class="block hover:text-[#0000FF]" href="#home">Home</a>
             <a class="block hover:text-[#0000FF]" href="about.html">About Us</a>
             <a class="block hover:text-[#0000FF]" href="#stones-gallery">Stones</a>
             <a class="block hover:text-[#0000FF]" href="#contact-section">Contact Us</a>
-            <a class="block hover:text-[#0000FF]" href="track.html">Track
+            <a class="flex items-center gap-3 hover:text-[#0000FF]" href="track.html">Track
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
@@ -281,25 +230,28 @@
         </nav>
       </div>
     </div>
-    <main class="px-4 md:px-10">
-      <div class="relative">
+    <main>
+      <section
+        id="home"
+        class="relative isolate flex min-h-[680px] flex-col overflow-hidden scroll-mt-[120px] md:min-h-[720px]"
+      >
         <img
-          class="h-[560px] w-full object-cover md:h-[520px]"
+          class="absolute inset-0 h-full w-full object-cover"
           src="hero1.jpg"
           alt="JLX gemstones hero"
         />
-        <div class="absolute inset-0 bg-black/12 backdrop-blur-[0.5px]"></div>
-        <div class="absolute inset-0 flex items-end px-4 pb-12 md:items-center md:px-8 md:pb-0">
-          <div class="max-w-[90%] space-y-3 md:max-w-[50%] md:space-y-4">
-            <h1 class="font-display text-[48px] font-bold uppercase leading-[57.6px] text-white drop-shadow-lg md:text-[64px] md:leading-[76.8px]">
+        <div class="hero-gradient absolute inset-0"></div>
+        <div class="relative z-10 flex flex-1 items-end px-4 pb-16 pt-[136px] md:items-center md:px-10 md:pb-32 md:pt-[168px]">
+          <div class="max-w-[640px] space-y-6 text-white">
+            <h1 class="font-display text-[48px] uppercase font-bold leading-[54px] text-white drop-shadow-[0_20px_45px_rgba(5,7,15,0.55)] md:text-[64px] md:leading-[76.8px]">
               JLX Gemstones and Consultants
             </h1>
-            <p class="text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-white">
+            <p class="text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-white/85">
               We take pride in serving your family and your generations to come with a lifetime of quality, trustworthy service.
             </p>
             <div>
               <a
-                class="inline-flex h-[48px] w-full max-w-[360px] items-center justify-center gap-2 bg-[#0000FF] text-[16px] font-semibold leading-[24px] tracking-[-0.2px] text-white md:w-[180px] md:max-w-none md:tracking-[-0.2px]"
+                class="inline-flex h-[48px] w-full max-w-[360px] items-center justify-center gap-2 bg-[#0000FF] px-6 text-[16px] font-semibold uppercase leading-[24px] tracking-[-0.2px] text-white transition hover:bg-[#1d1dff] md:w-[180px] md:max-w-none"
                 href="#stones-gallery"
               >
                 Explore
@@ -323,9 +275,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </main>
-    <section class="px-4 py-20 md:px-10">
+      </section>
+    <section class="px-4 py-20 scroll-mt-[120px] md:px-10">
       <div class="flex w-full flex-col gap-10 md:gap-14">
         <div class="flex flex-wrap items-center justify-between gap-2 md:gap-4">
           <div class="flex items-center gap-3 md:gap-6">
@@ -365,7 +316,7 @@
       </div>
     </section>
 
-    <section class="px-4 py-16 md:px-10">
+    <section class="px-4 py-16 scroll-mt-[120px] md:px-10">
       <div class="mx-auto flex w-full max-w-[1100px] flex-col items-start gap-4 md:flex-row md:items-center md:justify-between md:text-left md:gap-6">
         <div class="bg-black px-3 py-2 text-left md:flex md:w-[380px] md:items-center md:justify-center md:px-0 md:py-2.5">
           <p class="font-display text-[25px] font-bold uppercase leading-[30px] text-white md:text-[44px] md:leading-[52px]">
@@ -378,7 +329,7 @@
       </div>
     </section>
 
-    <section class="flex justify-center bg-[#F1F2F4] px-4 py-14 md:px-10">
+    <section class="flex justify-center bg-[#F1F2F4] px-4 py-14 scroll-mt-[120px] md:px-10">
       <div class="flex w-full max-w-[1200px] flex-col overflow-hidden bg-white shadow-2xl md:h-[664.273px] md:flex-row">
         <div class="relative flex flex-1 md:basis-1/2 md:order-2">
           <img
@@ -426,7 +377,7 @@
         </div>
       </div>
     </section>
-    <section class="px-4 py-20 md:px-10">
+    <section class="px-4 py-20 scroll-mt-[120px] md:px-10">
       <div class="flex w-full flex-col gap-10 md:gap-14">
         <div class="flex flex-wrap items-center justify-between gap-2 md:gap-4">
           <div class="flex items-center gap-3 md:gap-6">
@@ -453,7 +404,7 @@
         </div>
       </div>
     </section>
-    <section class="px-4 py-20 md:px-10">
+    <section class="px-4 py-20 scroll-mt-[120px] md:px-10">
       <div class="mx-auto flex max-w-[1100px] flex-col items-center gap-12 text-center">
         <h2 class="font-display text-[30px] font-bold uppercase leading-[32px] text-black md:text-[48px] md:leading-[57.6px]">
           Contact Us
@@ -520,35 +471,37 @@
       </div>
     </section>
 
-    <footer class="bg-[#F1F2F4] px-4 py-12 md:px-10">
+    </main>
+
+    <footer class="bg-[#0B1120] px-4 py-12 text-white md:px-10">
       <div class="mx-auto flex w-full max-w-[1100px] flex-col gap-10 text-center md:flex-row md:items-start md:justify-between md:text-left">
         <div class="space-y-4 md:max-w-[360px]">
-          <div class="font-display text-[24px] font-bold uppercase leading-[26px] text-black md:text-[32px] md:leading-[30px]">
+          <div class="font-display text-[24px] font-bold uppercase leading-[26px] text-white md:text-[32px] md:leading-[30px]">
             JLX Gemstones &amp; Consultants
           </div>
-          <p class="text-[14px] text-slate-600 md:text-[16px]">
+          <p class="text-[14px] text-white/70 md:text-[16px]">
             Illuminating the world through rare stones and refined craftsmanship.
           </p>
         </div>
-        <div class="grid grid-cols-2 w-full gap-8 text-left md:w-auto md:flex md:items-start md:gap-12">
-          <nav class="col-span-1 flex flex-col items-center gap-3 text-[14px] font-medium  text-slate-700 md:col-auto md:flex-row md:items-center md:gap-8 md:text-[16px] md:text-left">
-            <a class="hover:text-[#0000FF]" href="#about">About</a>
-            <a class="hover:text-[#0000FF]" href="#stones-gallery">Stones</a>
-            <a class="hover:text-[#0000FF]" href="#featured-stones">Featured</a>
-            <a class="hover:text-[#0000FF]" href="#contact-section">Contact</a>
+        <div class="grid w-full grid-cols-2 gap-8 text-left md:w-auto md:flex md:items-start md:gap-12">
+          <nav class="col-span-1 flex flex-col items-center gap-3 text-[14px] font-medium text-white md:col-auto md:flex-row md:items-center md:gap-8 md:text-[16px] md:text-left">
+            <a class="transition hover:text-[#7EA6FF]" href="#about">About</a>
+            <a class="transition hover:text-[#7EA6FF]" href="#stones-gallery">Stones</a>
+            <a class="transition hover:text-[#7EA6FF]" href="#featured-stones">Featured</a>
+            <a class="transition hover:text-[#7EA6FF]" href="#contact-section">Contact</a>
           </nav>
-          <div class="col-span-1 flex flex-col items-center gap-2 text-[14px] text-slate-600 md:col-auto md:items-start md:text-[15px]">
-            <a class="hover:text-[#0000FF]" href="#address">Global Offices</a>
-            <a class="hover:text-[#0000FF]" href="#newsletter">Newsletter</a>
+          <div class="col-span-1 flex flex-col items-center gap-2 text-[14px] text-white/70 md:col-auto md:items-start md:text-[15px]">
+            <a class="transition hover:text-[#7EA6FF]" href="#address">Global Offices</a>
+            <a class="transition hover:text-[#7EA6FF]" href="#newsletter">Newsletter</a>
           </div>
         </div>
       </div>
-      <div class="mx-auto mt-10 h-px w-full max-w-[1100px] bg-slate-200"></div>
-      <div class="mx-auto mt-6 flex w-full max-w-[1100px] flex-col items-center justify-between gap-3 text-[12px] text-slate-500 md:flex-row">
+      <div class="mx-auto mt-10 h-px w-full max-w-[1100px] bg-white/10"></div>
+      <div class="mx-auto mt-6 flex w-full max-w-[1100px] flex-col items-center justify-between gap-3 text-[12px] text-white/60 md:flex-row">
         <span>© 2025 JLX Gemstones. All rights reserved.</span>
         <div class="flex gap-4">
-          <a class="hover:text-[#0000FF]" href="#privacy">Privacy</a>
-          <a class="hover:text-[#0000FF]" href="#terms">Terms</a>
+          <a class="transition hover:text-[#7EA6FF]" href="#privacy">Privacy</a>
+          <a class="transition hover:text-[#7EA6FF]" href="#terms">Terms</a>
         </div>
       </div>
     </footer>
@@ -558,6 +511,7 @@
       const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
       const mobileMenuPanel = document.getElementById("mobileMenuPanel");
       const mobileMenuClose = document.getElementById("mobileMenuClose");
+      const siteHeader = document.getElementById("siteHeader");
 
       const closeMobileMenu = () => {
         if (!mobileMenuOverlay || !mobileMenuPanel) return;
@@ -589,6 +543,15 @@
 
         if (menuToggle) {
           menuToggle.setAttribute("aria-expanded", "true");
+        }
+      };
+
+      const updateHeaderState = () => {
+        if (!siteHeader) return;
+        if (window.scrollY > 80) {
+          siteHeader.classList.add("header-solid");
+        } else {
+          siteHeader.classList.remove("header-solid");
         }
       };
 
@@ -626,6 +589,9 @@
           }
         });
       }
+
+      updateHeaderState();
+      window.addEventListener("scroll", updateHeaderState);
     </script>
   </body>
 </html>

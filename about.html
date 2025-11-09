@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -26,12 +26,12 @@
       }
 
       body {
-        font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo,
-          Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
       }
 
       .font-display {
-        font-family: "Big Shoulders", "IBM Plex Mono", sans-serif;
+        font-family: "Big Shoulders", "Inter", sans-serif;
       }
 
       .marquee-track {
@@ -141,9 +141,9 @@
           <line x1="4" x2="20" y1="18" y2="18" />
         </svg>
       </button>
-      <nav class="hidden h-full items-center gap-[18px] text-base font-semibold uppercase md:flex">
+      <nav class="hidden h-full items-center gap-[18px] text-base font-semibold uppercase md:flex font-display">
         <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="index.html#home">Home</a>
-        <a class="flex h-full items-center border-b-2 border-b-[#0000FF] pb-1 text-[#0000FF]" href="about.html">About Us</a>
+        <a class="flex h-full items-center border-b-2 border-b-[#0000FF] pb-1 text-[#0000FF]" href="#about">About Us</a>
         <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="index.html#stones-gallery">Stones</a>
         <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="index.html#contact-section">Contact Us</a>
         <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="track.html">Track
@@ -305,35 +305,35 @@
       </section>
     </main>
 
-    <footer class="bg-[#F1F2F4] px-4 py-12 md:px-10">
+    <footer class="bg-[#0B1120] px-4 py-12 text-white md:px-10">
       <div class="mx-auto flex w-full max-w-[1100px] flex-col gap-10 text-center md:flex-row md:items-start md:justify-between md:text-left">
         <div class="space-y-4 md:max-w-[360px]">
-          <div class="font-display text-[24px] font-bold uppercase leading-[26px] text-black md:text-[32px] md:leading-[30px]">
+          <div class="font-display text-[24px] font-bold uppercase leading-[26px] text-white md:text-[32px] md:leading-[30px]">
             JLX Gemstones &amp; Consultants
           </div>
-          <p class="text-[14px] text-slate-600 md:text-[16px]">
+          <p class="text-[14px] text-white/70 md:text-[16px]">
             Illuminating the world through rare stones and refined craftsmanship.
           </p>
         </div>
-        <div class="grid grid-cols-2 w-full gap-8 text-left md:w-auto md:flex md:items-start md:gap-12">
-          <nav class="col-span-1 flex flex-col items-center gap-3 text-[14px] font-medium uppercase text-slate-700 md:col-auto md:flex-row md:items-center md:gap-8 md:text-[16px] md:text-left">
-            <a class="hover:text-[#0000FF]" href="index.html#about">About Us</a>
-            <a class="hover:text-[#0000FF]" href="index.html#stones-gallery">Stones</a>
-            <a class="hover:text-[#0000FF]" href="index.html#featured-stones">Featured</a>
-            <a class="hover:text-[#0000FF]" href="#contact">Contact</a>
+        <div class="grid w-full grid-cols-2 gap-8 text-left md:w-auto md:flex md:items-start md:gap-12">
+          <nav class="col-span-1 flex flex-col items-center gap-3 text-[14px] font-medium uppercase text-white md:col-auto md:flex-row md:items-center md:gap-8 md:text-[16px] md:text-left">
+            <a class="transition hover:text-[#7EA6FF]" href="index.html#home">Home</a>
+            <a class="transition hover:text-[#7EA6FF]" href="#about">About</a>
+            <a class="transition hover:text-[#7EA6FF]" href="index.html#stones-gallery">Stones</a>
+            <a class="transition hover:text-[#7EA6FF]" href="index.html#contact-section">Contact</a>
           </nav>
-          <div class="col-span-1 flex flex-col items-center gap-2 text-[14px] text-slate-600 md:col-auto md:items-start md:text-[15px]">
-            <a class="hover:text-[#0000FF]" href="index.html#address">Global Offices</a>
-            <a class="hover:text-[#0000FF]" href="index.html#newsletter">Newsletter</a>
+          <div class="col-span-1 flex flex-col items-center gap-2 text-[14px] text-white/70 md:col-auto md:items-start md:text-[15px]">
+            <a class="transition hover:text-[#7EA6FF]" href="index.html#address">Global Offices</a>
+            <a class="transition hover:text-[#7EA6FF]" href="index.html#newsletter">Newsletter</a>
           </div>
         </div>
       </div>
-      <div class="mx-auto mt-10 h-px w-full max-w-[1100px] bg-slate-200"></div>
-      <div class="mx-auto mt-6 flex w-full max-w-[1100px] flex-col items-center justify-between gap-3 text-[12px] text-slate-500 md:flex-row">
+      <div class="mx-auto mt-10 h-px w-full max-w-[1100px] bg-white/10"></div>
+      <div class="mx-auto mt-6 flex w-full max-w-[1100px] flex-col items-center justify-between gap-3 text-[12px] text-white/60 md:flex-row">
         <span>© 2025 JLX Gemstones. All rights reserved.</span>
         <div class="flex gap-4">
-          <a class="hover:text-[#0000FF]" href="#privacy">Privacy</a>
-          <a class="hover:text-[#0000FF]" href="#terms">Terms</a>
+          <a class="transition hover:text-[#7EA6FF]" href="index.html#privacy">Privacy</a>
+          <a class="transition hover:text-[#7EA6FF]" href="index.html#terms">Terms</a>
         </div>
       </div>
     </footer>
