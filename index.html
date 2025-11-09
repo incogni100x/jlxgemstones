@@ -59,6 +59,40 @@
         height: 20px;
       }
 
+      .header-logo {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        height: 32px;
+      }
+
+      .header-logo img {
+        height: 100%;
+        width: auto;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .header-logo .logo-solid {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+      }
+
+      .site-header.header-solid .header-logo .logo-default {
+        opacity: 0;
+      }
+
+      .site-header.header-solid .header-logo .logo-solid {
+        opacity: 1;
+      }
+
+      @media (min-width: 768px) {
+        .header-logo {
+          height: 44px;
+        }
+      }
+
       .site-header .nav-link:hover {
         color: #7ea6ff;
         border-color: #7ea6ff;
@@ -108,20 +142,29 @@
       class="site-header fixed inset-x-0 top-0 z-40 px-4 py-6 transition-all duration-500 md:px-10"
     >
       <div class="flex h-[48px] items-center justify-between">
-        <div class="font-display text-[24px] font-bold uppercase leading-[26px] md:text-[32px] md:leading-[30px]">
-          JLX GEMSTONES AND CONSULTANTS
-        </div>
+        <a href="#home" class="header-logo">
+          <img
+            src="logo.svg"
+            alt="JLX Gemstones and Consultants"
+            class="logo-default"
+          />
+          <img
+            src="logofooter.svg"
+            alt=""
+            aria-hidden="true"
+            class="logo-solid"
+          />
+        </a>
         <button
           id="menuToggle"
-          class="menu-toggle flex h-full items-center gap-2 text-sm font-bold uppercase text-current md:hidden"
+          class="menu-toggle flex h-[44px] w-[44px] items-center justify-center text-current md:hidden"
           aria-label="Toggle navigation"
           aria-expanded="false"
         >
-          Menu
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+            width="26"
+            height="26"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -134,7 +177,7 @@
             <line x1="4" x2="20" y1="18" y2="18" />
           </svg>
         </button>
-        <nav class="hidden h-full items-center gap-[18px] text-base font-bold uppercase md:flex font-display">
+        <nav class="hidden h-full items-center gap-[22px] text-[18px] font-bold uppercase md:flex font-display">
           <a class="nav-link active" href="#home">Home</a>
           <a class="nav-link" href="about.html">About Us</a>
           <a class="nav-link" href="#stones-gallery">Stones</a>
@@ -166,13 +209,11 @@
         id="mobileMenuPanel"
         class="absolute right-0 top-0 flex h-full w-full max-w-[320px] translate-x-full flex-col bg-white shadow-[-4px_0_30px_rgba(0,0,0,0.2)] transition-transform duration-300 ease-out"
       >
-        <div class="flex items-center justify-between px-6 py-4 border-b border-slate-200">
-          <div class="font-display text-lg font-bold uppercase text-[#0000FF]">
-            Menu
-          </div>
+        <div class="flex items-center justify-between border-b border-white/10 px-6 py-5">
+          <img src="logofooter.svg" alt="JLX Gemstones" class="h-8 w-auto" />
           <button
             id="mobileMenuClose"
-            class="flex size-9 items-center justify-center rounded-full border border-slate-200 text-slate-600"
+            class="flex size-9 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition hover:border-[#0000FF]/40 hover:text-[#0000FF]"
             aria-label="Close navigation"
           >
             <svg
@@ -191,17 +232,18 @@
             </svg>
           </button>
         </div>
-        <nav class="flex flex-1 flex-col justify-between px-6 py-8 text-base font-semibold uppercase text-neutral-900 font-display">
-          <div class="space-y-5">
-            <a class="block hover:text-[#0000FF]" href="#home">Home</a>
-            <a class="block hover:text-[#0000FF]" href="about.html">About Us</a>
-            <a class="block hover:text-[#0000FF]" href="#stones-gallery">Stones</a>
-            <a class="block hover:text-[#0000FF]" href="#contact-section">Contact Us</a>
-            <a class="flex items-center gap-3 hover:text-[#0000FF]" href="track.html">Track
+        <nav class="flex flex-1 flex-col justify-between px-6 py-10 font-display uppercase">
+          <div class="space-y-6 text-[20px] font-semibold tracking-[0.12em]">
+            <a class="block transition hover:text-[#7EA6FF]" href="#home">Home</a>
+            <a class="block transition hover:text-[#7EA6FF]" href="about.html">About Us</a>
+            <a class="block transition hover:text-[#7EA6FF]" href="#stones-gallery">Stones</a>
+            <a class="block transition hover:text-[#7EA6FF]" href="#contact-section">Contact Us</a>
+            <a class="flex items-center gap-3 transition hover:text-[#7EA6FF]" href="track.html">
+              Track
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
+                width="22"
+                height="22"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -213,18 +255,6 @@
                 <path d="m21 21-4.34-4.34" />
                 <circle cx="11" cy="11" r="8" />
               </svg>
-            </a>
-           
-          </div>
-          <div class="space-y-4 border-t border-slate-200 pt-6 text-sm normal-case text-slate-500">
-            <p class="font-semibold text-slate-700 uppercase tracking-[0.3em] text-xs">
-              Reach Us
-            </p>
-            <a class="block text-slate-700 hover:text-[#0000FF]" href="mailto:hello@jlxgemstones.com">
-              hello@jlxgemstones.com
-            </a>
-            <a class="block text-slate-700 hover:text-[#0000FF]" href="tel:+2340000000000">
-              +234 000 000 0000
             </a>
           </div>
         </nav>
