@@ -34,295 +34,394 @@
         font-family: "Big Shoulders", "Inter", sans-serif;
       }
 
-      .marquee-track {
-        overflow: hidden;
+      .site-header {
+        color: #ffffff;
+        background: linear-gradient(
+          180deg,
+          rgba(11, 17, 32, 0.65) 0%,
+          rgba(11, 17, 32, 0) 100%
+        );
       }
 
-      .marquee {
+      .site-header .nav-link {
         display: inline-flex;
         align-items: center;
-        gap: 4rem;
-        animation: marquee 15s linear infinite;
-        white-space: nowrap;
+        height: 100%;
+        gap: 6px;
+        padding-bottom: 4px;
+        border-bottom: 2px solid transparent;
+        color: inherit;
+        transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
       }
 
-      .marquee-item {
+      .site-header .nav-link svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .header-logo {
+        position: relative;
         display: inline-flex;
         align-items: center;
-        gap: 50px;
-        padding: 0 1.5rem;
+        height: 32px;
       }
 
-      @keyframes marquee {
-        0% {
-          transform: translateX(0);
-        }
+      .header-logo img {
+        height: 100%;
+        width: auto;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
 
-        100% {
-          transform: translateX(-100%);
+      .header-logo .logo-solid {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+      }
+
+      .site-header.header-solid .header-logo .logo-default {
+        opacity: 0;
+      }
+
+      .site-header.header-solid .header-logo .logo-solid {
+        opacity: 1;
+      }
+
+      @media (min-width: 768px) {
+        .header-logo {
+          height: 44px;
         }
+      }
+
+      .site-header .nav-link:hover {
+        color: #7ea6ff;
+        border-color: #7ea6ff;
+      }
+
+      .site-header .nav-link.active {
+        color: #7ea6ff;
+        border-color: #7ea6ff;
+      }
+
+      .site-header.header-solid {
+        background: rgba(255, 255, 255, 0.95);
+        color: #0b1120;
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+      }
+
+      .site-header.header-solid .nav-link {
+        color: #0f172a;
+      }
+
+      .site-header.header-solid .nav-link:hover,
+      .site-header.header-solid .nav-link:focus {
+        color: #0047c1;
+        border-color: #0047c1;
+      }
+
+      .site-header.header-solid .nav-link.active {
+        color: #0047c1;
+        border-color: #0047c1;
+      }
+
+      .hero-gradient {
+        background: linear-gradient(
+          180deg,
+          rgba(5, 7, 15, 0.85) 0%,
+          rgba(5, 7, 15, 0.4) 38%,
+          rgba(5, 7, 15, 0.9) 100%
+        );
       }
     </style>
   </head>
-  <body class="bg-white text-slate-900">
-    <div class="relative h-6 bg-[#0000FF] text-sm font-normal uppercase text-white">
-      <div class="marquee-track h-full">
-        <div class="marquee h-full">
-          <span class="marquee-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-sparkles-icon lucide-sparkles"
-              aria-hidden="true"
-            >
-              <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
-              <path d="M20 2v4" />
-              <path d="M22 4h-4" />
-              <circle cx="4" cy="20" r="2" />
-            </svg>
-            <span>WELCOME TO JLX STONES</span>
-          </span>
-          <span class="marquee-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-sparkles-icon lucide-sparkles"
-              aria-hidden="true"
-            >
-              <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
-              <path d="M20 2v4" />
-              <path d="M22 4h-4" />
-              <circle cx="4" cy="20" r="2" />
-            </svg>
-            <span>CRAFTING LIGHT WITH PRECISION</span>
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <header class="relative mt-[25px] mb-[25px] flex h-[30px] items-center justify-between px-4 md:px-10">
-      <div class="font-display text-[24px] font-bold uppercase leading-[26px] md:text-[32px] md:leading-[30px]">
-        JLX GEMSTONES AND CONSULTANTS
-      </div>
-      <button
-        id="menuToggle"
-        class="flex h-full items-center gap-2 text-sm font-medium uppercase text-[#0000FF] md:hidden"
-        aria-label="Toggle navigation"
-        aria-expanded="false"
-      >
-        Menu
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+  <body class="bg-white text-[#0F172A]">
+    <header
+      id="siteHeader"
+      class="site-header fixed inset-x-0 top-0 z-40 px-4 py-6 transition-all duration-500 md:px-10"
+    >
+      <div class="flex h-[48px] items-center justify-between">
+        <a href="index.html#home" class="header-logo">
+          <img
+            src="logo.svg"
+            alt="JLX Gemstones and Consultants"
+            class="logo-default"
+          />
+          <img
+            src="logofooter.svg"
+            alt=""
+            aria-hidden="true"
+            class="logo-solid"
+          />
+        </a>
+        <button
+          id="menuToggle"
+          class="menu-toggle flex h-[44px] w-[44px] items-center justify-center text-current md:hidden"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
         >
-          <line x1="4" x2="20" y1="6" y2="6" />
-          <line x1="4" x2="20" y1="12" y2="12" />
-          <line x1="4" x2="20" y1="18" y2="18" />
-        </svg>
-      </button>
-      <nav class="hidden h-full items-center gap-[18px] text-base font-semibold uppercase md:flex font-display">
-        <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="index.html#home">Home</a>
-        <a class="flex h-full items-center border-b-2 border-b-[#0000FF] pb-1 text-[#0000FF]" href="#about">About Us</a>
-        <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="index.html#stones-gallery">Stones</a>
-        <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="index.html#contact-section">Contact Us</a>
-        <a class="flex h-full items-center border-b-2 border-b-transparent pb-1 text-slate-800 transition hover:border-b-[#0000FF] hover:text-[#0000FF]" href="track.html">Track
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+            width="26"
+            height="26"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="lucide lucide-search-icon lucide-search"
-            aria-hidden="true"
           >
-            <path d="m21 21-4.34-4.34" />
-            <circle cx="11" cy="11" r="8" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="18" y2="18" />
           </svg>
-        </a>
-      </nav>
+        </button>
+        <nav class="hidden h-full items-center gap-[22px] text-[18px] font-semibold  md:flex">
+          <a class="nav-link" href="index.html#home">Home</a>
+          <a class="nav-link active" href="#about">About Us</a>
+          <a class="nav-link" href="index.html#stones-gallery">Stones</a>
+          <a class="nav-link" href="index.html#contact-section">Contact Us</a>
+          <a class="nav-link" href="track.html">
+            Track
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m21 21-4.34-4.34" />
+              <circle cx="11" cy="11" r="8" />
+            </svg>
+          </a>
+        </nav>
+      </div>
     </header>
+    <div
+      id="mobileMenuOverlay"
+      class="fixed inset-0 z-50 hidden bg-black/60 opacity-0 backdrop-blur-sm transition-opacity duration-300 md:hidden"
+    >
+      <div
+        id="mobileMenuPanel"
+        class="absolute right-0 top-0 flex h-full w-full max-w-[320px] translate-x-full flex-col bg-white shadow-[-4px_0_30px_rgba(0,0,0,0.2)] transition-transform duration-300 ease-out"
+      >
+        <div class="flex items-center justify-between border-b border-white/10 px-6 py-5">
+          <img src="logofooter.svg" alt="JLX Gemstones" class="h-8 w-auto" />
+          <button
+            id="mobileMenuClose"
+            class="flex size-9 items-center justify-center rounded-full border border-slate-200 text-slate-600 transition hover:border-[#0047C1]/40 hover:text-[#0047C1]"
+            aria-label="Close navigation"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" x2="6" y1="6" y2="18" />
+              <line x1="6" x2="18" y1="6" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <nav class="flex flex-1 flex-col justify-between px-6 py-10 ">
+          <div class="space-y-6 text-[20px] font-medium tracking-[-0.05em] ">
+            <a class="block transition hover:text-[#7EA6FF]" href="index.html#home">Home</a>
+            <a class="block text-[#0047C1] transition" href="#about">About Us</a>
+            <a class="block transition hover:text-[#7EA6FF]" href="index.html#stones-gallery">Stones</a>
+            <a class="block transition hover:text-[#7EA6FF]" href="index.html#contact-section">Contact Us</a>
+            <a class="flex items-center gap-3 transition hover:text-[#7EA6FF]" href="track.html">
+              Track
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="m21 21-4.34-4.34" />
+                <circle cx="11" cy="11" r="8" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
 
-    <main class="px-4 md:px-10">
-      <section id="about-hero" class="mb-20">
-        <div class="relative">
-          <img
-            class="h-[400px] w-full object-cover md:h-[400px]"
-            src="aboutus.webp"
-            alt="JLX team curating gemstones"
-          />
-          <div class="absolute inset-0 bg-black/12 backdrop-blur-[0.5px]"></div>
-          <div class="absolute inset-0 flex items-center justify-center px-4">
-            <h1 class="font-display text-[48px] font-bold uppercase leading-[57.6px] text-white drop-shadow-lg md:text-[64px] md:leading-[76.8px]">
+    <main>
+      <section
+        class="relative isolate flex min-h-[680px] flex-col overflow-hidden scroll-mt-[120px] md:min-h-[720px]"
+      >
+        <img
+          class="absolute inset-0 h-full w-full object-cover"
+          src="aboutus.webp"
+          alt="JLX team curating gemstones"
+        />
+        <div class="hero-gradient absolute inset-0"></div>
+        <div class="relative z-10 flex flex-1 items-end px-4 pb-16 pt-[136px] md:items-center md:px-10 md:pb-32 md:pt-[168px]">
+          <div class="max-w-[640px] space-y-6 text-white">
+            <h1 class="font-display text-[48px] uppercase font-bold leading-[54px] text-white drop-shadow-[0_20px_45px_rgba(5,7,15,0.55)] md:text-[64px] md:leading-[76.8px]">
               About Us
             </h1>
+            <p class="text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-white/85">
+              Honoring generations of gemstone artistry across Southeast Asia and beyond. Founded in Jakarta in 1925, JLX Gemstones evolved from a family atelier into a global studio that orchestrates bespoke stones for discerning collectors.
+            </p>
           </div>
         </div>
       </section>
-      <section id="about" class="mx-auto flex max-w-[1100px] flex-col items-center gap-8 md:gap-12">
-        <div class="flex flex-wrap justify-center gap-3 text-center text-[48px] font-bold uppercase leading-[57.6px] text-slate-900 md:text-[64px] md:leading-[76.8px]">
-          <span class="font-display">bold.</span>
-          <span class="font-display">confidence.</span>
-          <span class="font-display">beyond.</span>
-        </div>
-        <p class="max-w-[600px] text-left text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-black">
-           At JLX Gemstones and Consultant, we are experts in sourcing and supplying exquisite gemstones, offering a carefully curated
-           collection tailored for discerning jewelers, designers, and collectors. We believe in the unique narrative each stone carries and are dedicated to delivering gemstones that not only dazzle but also endure the test of time. Our stones are meticulously selected from prestigious sources worldwide, guaranteeing the highest quality and unmatched beauty.
-         </p>
-        <p class="max-w-[600px] text-left text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-black">
-           Our extensive selection caters to various design needs, be it crafting an engagement ring, a striking necklace, or a one-of-a-kind
-           piece of bespoke jewelry. With our presence in Asia, the USA, Australia, UAE, France, and Germany, we ensure a global reach to provide an array of precious and semi-precious stones suitable for any style and occasion.
-         </p>
-        <p class="max-w-[600px] text-left text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-black">
-           Backed by a team of skilled gemologists and miners, our commitment to outstanding customer service ensures your journey to finding
-           the perfect stone for your creations is seamless. With decades of experience in buying, selling, and supplying gemstones since 1985, we invite you to join us in embracing the art of fine jewelry with stones that exude elegance, sophistication, and artistry.
-         </p>
-        <div class="w-full border-t border-slate-200 pt-12"></div>
-        <div class="flex w-full flex-col items-center gap-6 text-center md:text-left">
-          <h3 class="font-display text-[32px] font-bold uppercase leading-[38px] text-slate-900 md:text-[44px] md:leading-[52px]">
-            Leadership, Gemologists & Field Experts
-          </h3>
-          <p class="max-w-[720px] text-left text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-black">
-            A collaborative force of executives, geologists, and exploration specialists guiding every gemstone from discovery to delivery.
-          </p>
-        </div>
-        <div class="grid w-full gap-12 md:grid-cols-2 lg:grid-cols-3">
-          <article class="flex flex-col gap-4">
-            <img class="h-[320px] w-full object-cover" src="rogerexcutive.jpg" alt="Portrait of Roger Arlen Perry" />
-            <div class="space-y-2">
-              <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Roger Arlen Perry</h4>
-              <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0000FF]">Chief Executive Officer</span>
-              <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
-                With 35 years moving rare stones from source to atelier, Roger leads JLX with a focus on ethical gemstone acquisition, bespoke client service, and strategic partnerships for elite jewelers across North America and Australia.
-              </p>
-            </div>
-          </article>
-          <article class="flex flex-col gap-4">
-            <img class="h-[320px] w-full object-cover" src="emilychief.jpg" alt="Portrait of Dr. Emily Foster" />
-            <div class="space-y-2">
-              <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Dr. Emily Foster</h4>
-              <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0000FF]">Chief Geologist</span>
-              <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
-                A PhD gemologist, Emily leads provenance studies and color grading protocols for over 200 global projects, decoding mineral systems to secure luminous stones suited for signature jewelry collections.
-              </p>
-            </div>
-          </article>
-          <article class="flex flex-col gap-4">
-            <img class="h-[320px] w-full object-cover" src="michaelcoo.jpg" alt="Portrait of Michael Harrington" />
-            <div class="space-y-2">
-              <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Michael Harrington</h4>
-              <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0000FF]">Chief Operating Officer</span>
-              <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
-                Michael orchestrates global sourcing, custom cutting schedules, and client logistics, drawing on 25+ years guiding high-end gemstone supply chains for maisons and couture studios.
-              </p>
-            </div>
-          </article>
-          <article class="flex flex-col gap-4">
-            <img class="h-[320px] w-full object-cover" src="lauradirectory.jpg" alt="Portrait of Laura Chen" />
-            <div class="space-y-2">
-              <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Laura Chen</h4>
-              <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0000FF]">Director of Technical Services</span>
-              <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
-                Laura supervises certification dossiers, colorimetric reports, and provenance documents, ensuring every gemstone shipment meets luxury retail and investment standards worldwide.
-              </p>
-            </div>
-          </article>
-          <article class="flex flex-col gap-4">
-            <img class="h-[320px] w-full object-cover" src="rajeshexploration.jpg" alt="Portrait of Dr. Rajesh Kumar" />
-            <div class="space-y-2">
-              <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Dr. Rajesh Kumar</h4>
-              <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0000FF]">Senior Exploration Manager</span>
-              <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
-                Rajesh sources emeralds, sapphires, and tourmalines across Africa and South America, partnering with artisanal miners to deliver traceable stones for bespoke jewelry houses.
-              </p>
-            </div>
-          </article>
-          <article class="flex flex-col gap-4">
-            <img class="h-[320px] w-full object-cover" src="lewisfinancial.jpg" alt="Portrait of Hannibal Lewis" />
-            <div class="space-y-2">
-              <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Hannibal Lewis</h4>
-              <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0000FF]">Chief Financial Officer</span>
-              <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
-                Hannibal shapes pricing models, auction strategies, and inventory investments, ensuring JLX collections stay competitive while honouring miners and master cutters.
-              </p>
-            </div>
-          </article>
-          <article class="flex flex-col gap-4">
-            <img class="h-[320px] w-full object-cover" src="niaremote.jpg" alt="Portrait of Nia Johnson" />
-            <div class="space-y-2">
-              <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Nia Johnson</h4>
-              <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0000FF]">Head of GIS &amp; Remote Sensing</span>
-              <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
-                Nia’s satellite and lidar insights pinpoint gemstone corridors, guiding field teams to pockets of color-grade rough ideal for high-jewelry artisans.
-              </p>
-            </div>
-          </article>
-          <article class="flex flex-col gap-4">
-            <img class="h-[320px] w-full object-cover" src="barryhealth.jpg" alt="Portrait of Barry Ralph Boyce" />
-            <div class="space-y-2">
-              <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Barry Ralph Boyce</h4>
-              <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0000FF]">Director of Health &amp; Safety</span>
-              <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
-                Barry safeguards artisan miners and lapidarists, instilling best-in-class safety protocols from extraction sites to polishing studios for consistent, ethical supply.
-              </p>
-            </div>
-          </article>
-          <article class="flex flex-col gap-4">
-            <img class="h-[320px] w-full object-cover" src="isabellastrategy.jpg" alt="Portrait of Isabella Rossi" />
-            <div class="space-y-2">
-              <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Isabella Rossi</h4>
-              <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0000FF]">Investor Relations &amp; Corporate Strategy</span>
-              <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
-                Isabella connects ateliers, collectors, and investors, translating gemstone provenance into storytelling that elevates each JLX collection in the luxury market.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>
+      <section id="about" class="mx-auto flex max-w-[1100px] flex-col items-center gap-8 px-4 py-16 md:gap-12 md:px-10">
+          <div class="flex flex-wrap justify-center gap-3 text-center text-[48px] font-bold uppercase leading-[57.6px] text-slate-900 md:text-[64px] md:leading-[76.8px]">
+            <span class="font-display">bold.</span>
+            <span class="font-display">confidence.</span>
+            <span class="font-display">beyond.</span>
+          </div>
+          <p class="max-w-[600px] text-left text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-black">
+             At JLX Gemstones and Consultant, we are experts in sourcing and supplying exquisite gemstones, offering a carefully curated
+             collection tailored for discerning jewelers, designers, and collectors. We believe in the unique narrative each stone carries and are dedicated to delivering gemstones that not only dazzle but also endure the test of time. Our stones are meticulously selected from prestigious sources worldwide, guaranteeing the highest quality and unmatched beauty.
+           </p>
+          <p class="max-w-[600px] text-left text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-black">
+             Our extensive selection caters to various design needs, be it crafting an engagement ring, a striking necklace, or a one-of-a-kind
+             piece of bespoke jewelry. With our presence in Asia, the USA, Australia, UAE, France, and Germany, we ensure a global reach to provide an array of precious and semi-precious stones suitable for any style and occasion.
+           </p>
+          <p class="max-w-[600px] text-left text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-black">
+             Backed by a team of skilled gemologists and miners, our commitment to outstanding customer service ensures your journey to finding
+             the perfect stone for your creations is seamless. With decades of experience in buying, selling, and supplying gemstones since 1985, we invite you to join us in embracing the art of fine jewelry with stones that exude elegance, sophistication, and artistry.
+           </p>
+          <div class="w-full border-t border-slate-200 pt-12"></div>
+          <div class="flex w-full flex-col items-center gap-6 text-center md:text-left">
+            <h3 class="font-display text-[32px] font-bold uppercase leading-[38px] text-slate-900 md:text-[44px] md:leading-[52px]">
+              Leadership, Gemologists & Field Experts
+            </h3>
+            <p class="max-w-[720px] text-left text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-black">
+              A collaborative force of executives, geologists, and exploration specialists guiding every gemstone from discovery to delivery.
+            </p>
+          </div>
+          <div class="grid w-full gap-12 md:grid-cols-2 lg:grid-cols-3">
+            <article class="flex flex-col gap-4">
+              <img class="h-[320px] w-full object-cover" src="rogerexecutive.jpg" alt="Portrait of Roger Arlen Perry" />
+              <div class="space-y-2">
+                <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Roger Arlen Perry</h4>
+                <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0047C1]">Chief Executive Officer</span>
+                <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
+                  With 35 years moving rare stones from source to atelier, Roger leads JLX with a focus on ethical gemstone acquisition, bespoke client service, and strategic partnerships for elite jewelers across North America and Australia.
+                </p>
+              </div>
+            </article>
+            <article class="flex flex-col gap-4">
+              <img class="h-[320px] w-full object-cover" src="emilychief.jpg" alt="Portrait of Dr. Emily Foster" />
+              <div class="space-y-2">
+                <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Dr. Emily Foster</h4>
+                <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0047C1]">Chief Geologist</span>
+                <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
+                  A PhD gemologist, Emily leads provenance studies and color grading protocols for over 200 global projects, decoding mineral systems to secure luminous stones suited for signature jewelry collections.
+                </p>
+              </div>
+            </article>
+            <article class="flex flex-col gap-4">
+              <img class="h-[320px] w-full object-cover" src="michealoperating.jpg" alt="Portrait of Michael Harrington" />
+              <div class="space-y-2">
+                <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Michael Harrington</h4>
+                <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0047C1]">Chief Operating Officer</span>
+                <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
+                  Michael orchestrates global sourcing, custom cutting schedules, and client logistics, drawing on 25+ years guiding high-end gemstone supply chains for maisons and couture studios.
+                </p>
+              </div>
+            </article>
+            <article class="flex flex-col gap-4">
+              <img class="h-[320px] w-full object-cover" src="lauradirectory.jpg" alt="Portrait of Laura Chen" />
+              <div class="space-y-2">
+                <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Laura Chen</h4>
+                <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0047C1]">Director of Technical Services</span>
+                <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
+                  Laura supervises certification dossiers, colorimetric reports, and provenance documents, ensuring every gemstone shipment meets luxury retail and investment standards worldwide.
+                </p>
+              </div>
+            </article>
+            <article class="flex flex-col gap-4">
+              <img class="h-[320px] w-full object-cover" src="rajeshexploration.jpg" alt="Portrait of Dr. Rajesh Kumar" />
+              <div class="space-y-2">
+                <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Dr. Rajesh Kumar</h4>
+                <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0047C1]">Senior Exploration Manager</span>
+                <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
+                  Rajesh sources emeralds, sapphires, and tourmalines across Africa and South America, partnering with artisanal miners to deliver traceable stones for bespoke jewelry houses.
+                </p>
+              </div>
+            </article>
+            <article class="flex flex-col gap-4">
+              <img class="h-[320px] w-full object-cover" src="lewisfinancial.jpg" alt="Portrait of Hannibal Lewis" />
+              <div class="space-y-2">
+                <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Hannibal Lewis</h4>
+                <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0047C1]">Chief Financial Officer</span>
+                <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
+                  Hannibal shapes pricing models, auction strategies, and inventory investments, ensuring JLX collections stay competitive while honouring miners and master cutters.
+                </p>
+              </div>
+            </article>
+            <article class="flex flex-col gap-4">
+              <img class="h-[320px] w-full object-cover" src="niaremote.jpg" alt="Portrait of Nia Johnson" />
+              <div class="space-y-2">
+                <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Nia Johnson</h4>
+                <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0047C1]">Head of GIS &amp; Remote Sensing</span>
+                <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
+                  Nia’s satellite and lidar insights pinpoint gemstone corridors, guiding field teams to pockets of color-grade rough ideal for high-jewelry artisans.
+                </p>
+              </div>
+            </article>
+            <article class="flex flex-col gap-4">
+              <img class="h-[320px] w-full object-cover" src="barryhealth.jpg" alt="Portrait of Barry Ralph Boyce" />
+              <div class="space-y-2">
+                <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Barry Ralph Boyce</h4>
+                <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0047C1]">Director of Health &amp; Safety</span>
+                <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
+                  Barry safeguards artisan miners and lapidarists, instilling best-in-class safety protocols from extraction sites to polishing studios for consistent, ethical supply.
+                </p>
+              </div>
+            </article>
+            <article class="flex flex-col gap-4">
+              <img class="h-[320px] w-full object-cover" src="rossirelations.jpg" alt="Portrait of Isabella Rossi" />
+              <div class="space-y-2">
+                <h4 class="font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900">Isabella Rossi</h4>
+                <span class="block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0047C1]">Investor Relations &amp; Corporate Strategy</span>
+                <p class="text-[16px] leading-[24px] tracking-[-0.4px] text-black">
+                  Isabella connects ateliers, collectors, and investors, translating gemstone provenance into storytelling that elevates each JLX collection in the luxury market.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
     </main>
 
     <footer class="bg-[#0B1120] px-4 py-12 text-white md:px-10">
       <div class="mx-auto flex w-full max-w-[1100px] flex-col gap-10 text-center md:flex-row md:items-start md:justify-between md:text-left">
         <div class="space-y-4 md:max-w-[360px]">
-          <div class="font-display text-[24px] font-bold uppercase leading-[26px] text-white md:text-[32px] md:leading-[30px]">
-            JLX Gemstones &amp; Consultants
+          <div class="flex items-center justify-center md:justify-start">
+            <img src="logo.svg" alt="JLX Gemstones &amp; Consultants" class="h-9 w-auto md:h-10" />
           </div>
-          <p class="text-[14px] text-white/70 md:text-[16px]">
+          <p class="text-[14px] text-white md:text-[16px]">
             Illuminating the world through rare stones and refined craftsmanship.
           </p>
         </div>
         <div class="grid w-full grid-cols-2 gap-8 text-left md:w-auto md:flex md:items-start md:gap-12">
-          <nav class="col-span-1 flex flex-col items-center gap-3 text-[14px] font-medium uppercase text-white md:col-auto md:flex-row md:items-center md:gap-8 md:text-[16px] md:text-left">
+          <nav class="col-span-1 flex flex-col items-center gap-3 text-[14px] font-medium text-white md:col-auto md:flex-row md:items-center md:gap-8 md:text-[16px] md:text-left">
             <a class="transition hover:text-[#7EA6FF]" href="index.html#home">Home</a>
             <a class="transition hover:text-[#7EA6FF]" href="#about">About</a>
             <a class="transition hover:text-[#7EA6FF]" href="index.html#stones-gallery">Stones</a>
             <a class="transition hover:text-[#7EA6FF]" href="index.html#contact-section">Contact</a>
           </nav>
-          <div class="col-span-1 flex flex-col items-center gap-2 text-[14px] text-white/70 md:col-auto md:items-start md:text-[15px]">
+          <div class="col-span-1 flex flex-col items-center gap-2 text-[14px] font-medium text-white md:col-auto md:items-start md:text-[15px]">
             <a class="transition hover:text-[#7EA6FF]" href="index.html#address">Global Offices</a>
             <a class="transition hover:text-[#7EA6FF]" href="index.html#newsletter">Newsletter</a>
           </div>
@@ -343,6 +442,7 @@
       const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
       const mobileMenuPanel = document.getElementById("mobileMenuPanel");
       const mobileMenuClose = document.getElementById("mobileMenuClose");
+      const siteHeader = document.getElementById("siteHeader");
 
       const closeMobileMenu = () => {
         if (!mobileMenuOverlay || !mobileMenuPanel) return;
@@ -377,6 +477,15 @@
         }
       };
 
+      const updateHeaderState = () => {
+        if (!siteHeader) return;
+        if (window.scrollY > 80) {
+          siteHeader.classList.add("header-solid");
+        } else {
+          siteHeader.classList.remove("header-solid");
+        }
+      };
+
       if (menuToggle && mobileMenuOverlay && mobileMenuPanel) {
         menuToggle.addEventListener("click", () => {
           const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
@@ -398,7 +507,22 @@
         mobileMenuPanel.querySelectorAll("a").forEach((link) => {
           link.addEventListener("click", closeMobileMenu);
         });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeMobileMenu();
+          }
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth >= 768) {
+            closeMobileMenu();
+          }
+        });
       }
+
+      updateHeaderState();
+      window.addEventListener("scroll", updateHeaderState);
     </script>
   </body>
 </html>
