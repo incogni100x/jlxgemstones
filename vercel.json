@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/verify", "destination": "/verify.html" },
+    { "source": "/menu", "destination": "/menu.html" }
+  ],
+  "redirects": [
+    { "source": "/about/", "destination": "/about", "permanent": true },
+    { "source": "/verify/", "destination": "/verify", "permanent": true },
+    { "source": "/menu/", "destination": "/menu", "permanent": true }
+  ]
+}
