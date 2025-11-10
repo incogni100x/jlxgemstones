@@ -1,0 +1,25 @@
+{
+  "name": "newdesign",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/incogni100x/jlxgemstones.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/incogni100x/jlxgemstones/issues"
+  },
+  "homepage": "https://github.com/incogni100x/jlxgemstones#readme",
+  "description": "",
+  "devDependencies": {
+    "vite": "^7.2.2"
+  }
+}

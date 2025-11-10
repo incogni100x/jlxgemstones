@@ -140,6 +140,7 @@
     <header
       id="siteHeader"
       class="site-header fixed inset-x-0 top-0 z-40 px-4 py-6 transition-all duration-500 md:px-10"
+      data-solid-threshold="80"
     >
       <div class="flex h-[48px] items-center justify-between">
         <a href="#home" class="header-logo">
@@ -377,7 +378,7 @@
           <h2 class="font-display text-[48px] font-bold uppercase leading-[57.6px] md:text-[64px] md:leading-[76.8px]">
             Crafted for luminous stories
           </h2>
-          <p class="text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-[#334155] md:text-[16px] md:leading-[24px] md:tracking-[-0.4px]">
+          <p class="text-[16px] font-normal leading-[24px] tracking-[-0.4px] text-black md:text-[16px] md:leading-[24px] md:tracking-[-0.4px]">
             Elevate your collection with signature gemstones refined through generational mastery. Each piece mirrors the hero cut aesthetics of our flagship showcase, designed to capture and refract light in unforgettable ways.
           </p>
           <div>
@@ -565,94 +566,7 @@
         </div>
       </div>
     </footer>
-
-    <script>
-      const menuToggle = document.getElementById("menuToggle");
-      const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
-      const mobileMenuPanel = document.getElementById("mobileMenuPanel");
-      const mobileMenuClose = document.getElementById("mobileMenuClose");
-      const siteHeader = document.getElementById("siteHeader");
-
-      const closeMobileMenu = () => {
-        if (!mobileMenuOverlay || !mobileMenuPanel) return;
-        if (mobileMenuOverlay.classList.contains("hidden")) return;
-
-        mobileMenuPanel.classList.add("translate-x-full");
-        mobileMenuOverlay.classList.add("opacity-0");
-
-        setTimeout(() => {
-          mobileMenuOverlay.classList.add("hidden");
-          document.body.style.overflow = "";
-        }, 300);
-
-        if (menuToggle) {
-          menuToggle.setAttribute("aria-expanded", "false");
-        }
-      };
-
-      const openMobileMenu = () => {
-        if (!mobileMenuOverlay || !mobileMenuPanel) return;
-
-        mobileMenuOverlay.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-
-        requestAnimationFrame(() => {
-          mobileMenuOverlay.classList.remove("opacity-0");
-          mobileMenuPanel.classList.remove("translate-x-full");
-        });
-
-        if (menuToggle) {
-          menuToggle.setAttribute("aria-expanded", "true");
-        }
-      };
-
-      const updateHeaderState = () => {
-        if (!siteHeader) return;
-        if (window.scrollY > 80) {
-          siteHeader.classList.add("header-solid");
-        } else {
-          siteHeader.classList.remove("header-solid");
-        }
-      };
-
-      if (menuToggle && mobileMenuOverlay && mobileMenuPanel) {
-        menuToggle.addEventListener("click", () => {
-          const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-          if (isExpanded) {
-            closeMobileMenu();
-          } else {
-            openMobileMenu();
-          }
-        });
-
-        mobileMenuOverlay.addEventListener("click", (event) => {
-          if (event.target === mobileMenuOverlay) {
-            closeMobileMenu();
-          }
-        });
-
-        mobileMenuClose?.addEventListener("click", closeMobileMenu);
-
-        mobileMenuPanel.querySelectorAll("a").forEach((link) => {
-          link.addEventListener("click", closeMobileMenu);
-        });
-
-        document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape") {
-            closeMobileMenu();
-          }
-        });
-
-        window.addEventListener("resize", () => {
-          if (window.innerWidth >= 768) {
-            closeMobileMenu();
-          }
-        });
-      }
-
-      updateHeaderState();
-      window.addEventListener("scroll", updateHeaderState);
-    </script>
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
 
