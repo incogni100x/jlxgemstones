@@ -1,43 +1,44 @@
 import { supabase } from './client.js';
 
+const FALLBACK_IMAGE = 'https://via.placeholder.com/640x360?text=Team+Member';
+
 function createCard(role) {
-  const card = document.createElement('div');
-  card.className = 'bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden';
+  const article = document.createElement('article');
+  article.className = 'flex flex-col gap-4';
 
   const image = document.createElement('img');
-  image.src = role.image_url || 'https://via.placeholder.com/640x360?text=Team+Member';
-  image.alt = role.role_title || 'Team member';
-  image.className = 'w-full h-64 object-cover';
+  image.src = role.image_url || FALLBACK_IMAGE;
+  image.alt = role.member_name || role.member_role || 'JLX Gemstones team member';
+  image.className = 'h-[320px] w-full object-cover';
+  image.loading = 'lazy';
   image.referrerPolicy = 'no-referrer';
-
   image.addEventListener('error', () => {
-    image.src = 'https://via.placeholder.com/640x360?text=Team+Member';
+    image.src = FALLBACK_IMAGE;
   });
 
-  const content = document.createElement('div');
-  content.className = 'p-6';
+  const details = document.createElement('div');
+  details.className = 'space-y-2';
 
-  const title = document.createElement('h3');
-  title.className = 'text-2xl font-bold text-[#0061A9] mb-2';
-  title.textContent = role.member_name || role.role_title || 'Team Member';
+  const nameEl = document.createElement('h4');
+  nameEl.className = 'font-display text-[24px] font-bold uppercase leading-[28px] text-slate-900';
+  nameEl.textContent = role.member_name || role.member_role || 'JLX Team Member';
 
-  const subtitle = document.createElement('p');
-  subtitle.className = 'text-[#FF6A0C] font-semibold mb-4';
-  const subtitleValue = role.member_role || role.created_by_email || 'Specialist';
-  subtitle.textContent = subtitleValue;
+  const roleEl = document.createElement('span');
+  roleEl.className = 'block text-[16px] font-semibold uppercase tracking-[0.6px] text-[#0047C1]';
+  roleEl.textContent = role.member_role || role.created_by_email || 'Gemstone Specialist';
 
-  const description = document.createElement('p');
-  description.className = 'text-gray-700 leading-relaxed whitespace-pre-line';
-  description.textContent = role.member_description || role.role_description || '';
+  const descriptionEl = document.createElement('p');
+  descriptionEl.className = 'text-[16px] leading-[24px] tracking-[-0.4px] text-black whitespace-pre-line';
+  descriptionEl.textContent = role.member_description || role.role_description || '';
 
-  content.appendChild(title);
-  content.appendChild(subtitle);
-  content.appendChild(description);
+  details.appendChild(nameEl);
+  details.appendChild(roleEl);
+  details.appendChild(descriptionEl);
 
-  card.appendChild(image);
-  card.appendChild(content);
+  article.appendChild(image);
+  article.appendChild(details);
 
-  return card;
+  return article;
 }
 
 async function loadDynamicRoles() {
