@@ -257,19 +257,22 @@
               Enter your contract reference to review allocation terms, gemstone distribution, and profit statements in real time.
             </p>
           </div>
-          <form class="flex w-full flex-col gap-4 md:flex-row md:items-end md:gap-6">
+          <form id="verify-form" class="flex w-full flex-col gap-4 md:flex-row md:items-end md:gap-6">
             <label class="flex w-full flex-col gap-2 text-left text-[14px] font-semibold uppercase tracking-[0.32em] text-[#0F172A]/80">
               Contract Reference ID
               <input
                 class="h-[56px] w-full border border-slate-300 bg-white px-5 text-[16px] font-semibold uppercase tracking-[0.18em] text-[#0F172A] placeholder:text-[#94A3B8] focus:border-[#0047C1] focus:outline-none md:w-[360px]"
                 type="text"
-                name="contract-code"
-                placeholder="JLX-0562789341"
-                value="JLX-0562789341"
+                id="verify-input"
+                name="partnerCode"
+                placeholder="JLX123456"
+                autocomplete="off"
+                required
               />
             </label>
             <button
               type="submit"
+              id="verify-submit"
               class="inline-flex h-[56px] w-full max-w-[280px] flex-shrink-0 items-center justify-center gap-2 whitespace-nowrap bg-[#0047C1] px-6 text-[16px] font-semibold uppercase tracking-[-0.1px] text-white transition hover:bg-[#0f5fe3] md:w-[200px]"
             >
               Verify Contract
@@ -289,125 +292,124 @@
               </svg>
             </button>
           </form>
+          <p id="verify-feedback" class="min-h-[24px] text-[14px] font-medium text-[#0047C1]"></p>
         </div>
       </section>
 
-      <section class="mt-16 flex justify-center">
+      <section id="verification-results" class="mt-16 hidden justify-center">
         <div class="w-full max-w-[1100px] space-y-10">
+          <div id="verify-image-wrap" class="hidden overflow-hidden rounded-lg border border-slate-200 md:h-[320px] md:w-[320px] md:ml-0">
+            <img
+              id="verify-order-image"
+              src=""
+              alt="Contract gemstone"
+              class="h-64 w-full object-cover md:h-full md:w-full"
+            />
+          </div>
+
           <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div class="space-y-2">
               <p class="text-[14px] font-semibold uppercase tracking-[0.24em] text-[#0F172A]/80">Contract Dossier</p>
-              <h2 class="text-[26px] font-semibold uppercase leading-[32px] tracking-[-0.04em] text-[#0F172A] md:text-[40px] md:leading-[48px] md:tracking-[-0.04em]">
-                Verification of 12,050 ct Grandidierite Agreement
+              <h2 class="text-[26px] font-semibold uppercase leading-[32px] tracking-[-0.04em] text-[#0F172A] md:text-[40px] md:leading-[48px] md:tracking-[-0.04em]" id="verify-summary-title">
+                Distribution Overview
               </h2>
             </div>
-            <button
-              class="inline-flex h-[48px] items-center justify-center gap-2 border border-[#0047C1] bg-white px-5 text-[16px] font-semibold uppercase tracking-[-0.1px] text-[#0047C1] transition hover:bg-[#0047C1] hover:text-white"
-              type="button"
-            >
-              Download Contract Pack
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" x2="12" y1="15" y2="3" />
-              </svg>
-            </button>
           </div>
 
           <div class="grid gap-6 md:grid-cols-2">
-            <div class="space-y-4 rounded-none border border-slate-200 bg-white p-6">
+            <div class="space-y-4 rounded-none border border-[#0047C1]/30 bg-[#F8FAFF] p-6 shadow-sm">
               <p class="text-[14px] font-semibold uppercase tracking-[0.24em] text-[#0047C1]">Contract Parties</p>
-              <dl class="space-y-3 text-[16px] leading-[24px] tracking-[-0.1px] text-[#0F172A]">
+              <dl class="space-y-3 text-[16px] leading-[24px] tracking-[-0.05em] text-[#0B1120]">
                 <div class="flex justify-between">
-                  <dt class="font-medium text-[#0F172A]/85">Contract Code</dt>
-                  <dd class="font-semibold text-[#0F172A]">JLX-0562789341</dd>
+                  <dt class="font-medium text-[#0B1120]/80">Partner UID Code</dt>
+                  <dd class="font-semibold text-[#0B1120]" id="verify-partner-code">—</dd>
                 </div>
                 <div class="flex justify-between">
-                  <dt class="font-medium text-[#0F172A]/85">Primary Signatory</dt>
-                  <dd class="font-semibold uppercase text-[#0F172A]">Walter Phillips</dd>
+                  <dt class="font-medium text-[#0B1120]/80">Name</dt>
+                  <dd class="font-semibold uppercase text-[#0B1120]" id="verify-partner-name">—</dd>
                 </div>
                 <div class="flex justify-between">
-                  <dt class="font-medium text-[#0F172A]/85">Compliance Reference</dt>
-                  <dd class="font-semibold text-[#0F172A]">ISO 516807:2025</dd>
+                  <dt class="font-medium text-[#0B1120]/80">ISO</dt>
+                  <dd class="font-semibold text-[#0B1120]" id="verify-iso">—</dd>
+                </div>
+                <div class="flex justify-between">
+                  <dt class="font-medium text-[#0B1120]/80">Order Number</dt>
+                  <dd class="font-semibold text-[#0B1120]" id="verify-order-number">—</dd>
+                </div>
+                <div class="flex justify-between">
+                  <dt class="font-medium text-[#0B1120]/80">Order Date</dt>
+                  <dd class="font-semibold text-[#0B1120]" id="verify-order-date">—</dd>
                 </div>
               </dl>
             </div>
-            <div class="space-y-4 rounded-none border border-slate-200 bg-white p-6">
+            <div class="space-y-4 rounded-none border border-[#0047C1]/30 bg-[#F8FAFF] p-6 shadow-sm">
               <p class="text-[14px] font-semibold uppercase tracking-[0.24em] text-[#0047C1]">Execution Overview</p>
-              <dl class="space-y-3 text-[16px] leading-[24px] tracking-[-0.1px] text-[#0F172A]">
+              <dl class="space-y-3 text-[16px] leading-[24px] tracking-[-0.05em] text-[#0B1120]">
                 <div class="flex justify-between">
-                  <dt class="font-medium text-[#0F172A]/85">Account Executive</dt>
-                  <dd class="font-semibold uppercase text-[#0F172A]">Lawrence Andre</dd>
+                  <dt class="font-medium text-[#0B1120]/80">Sales Person</dt>
+                  <dd class="font-semibold uppercase text-[#0B1120]" id="verify-sales-person">—</dd>
                 </div>
                 <div class="flex justify-between">
-                  <dt class="font-medium text-[#0F172A]/85">Contract Manager</dt>
-                  <dd class="font-semibold uppercase text-[#0F172A]">Sarah Alexandre</dd>
+                  <dt class="font-medium text-[#0B1120]/80">Manager in charge</dt>
+                  <dd class="font-semibold uppercase text-[#0B1120]" id="verify-manager">—</dd>
                 </div>
                 <div class="flex justify-between">
-                  <dt class="font-medium text-[#0F172A]/85">Remittance Method</dt>
-                  <dd class="font-semibold uppercase text-[#0F172A]">Bank Transfer</dd>
+                  <dt class="font-medium text-[#0B1120]/80">Payment Type</dt>
+                  <dd class="font-semibold uppercase text-[#0B1120]" id="verify-payment-type">—</dd>
                 </div>
                 <div class="flex justify-between">
-                  <dt class="font-medium text-[#0F172A]/85">Allocation Volume</dt>
-                  <dd class="font-semibold text-[#0F172A]">12,050 carat</dd>
+                  <dt class="font-medium text-[#0B1120]/80">Delivered Quantity</dt>
+                  <dd class="font-semibold text-[#0B1120]" id="verify-delivered">—</dd>
                 </div>
                 <div class="flex justify-between">
-                  <dt class="font-medium text-[#0F172A]/85">Field Personnel</dt>
-                  <dd class="font-semibold text-[#0F172A]">132</dd>
+                  <dt class="font-medium text-[#0B1120]/80">No. of External Employees</dt>
+                  <dd class="font-semibold text-[#0B1120]" id="verify-external-employees">—</dd>
                 </div>
               </dl>
             </div>
           </div>
 
-          <div class="overflow-hidden rounded-none border border-slate-200">
+          <div class="overflow-hidden rounded-none border border-[#0047C1]/30 bg-white shadow-sm">
             <div class="w-full overflow-x-auto">
-              <table class="min-w-[720px] divide-y divide-slate-200 bg-white md:min-w-full">
-                <thead class="bg-[#EEF3FF] text-[#0047C1]">
+              <table class="min-w-[720px] divide-y divide-[#0047C1]/15 text-[#0B1120] md:min-w-full">
+                <thead class="bg-[#0047C1] text-white">
                   <tr class="text-left text-[14px] font-semibold uppercase tracking-[0.24em]">
-                    <th scope="col" class="px-6 py-4 font-medium">Stones</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-right">Quantity (carat)</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-right">Purchase Price</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-right">Market Selling Price</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-right">Profit / Carat</th>
-                    <th scope="col" class="px-6 py-4 font-medium text-right">Total Profit</th>
+                    <th scope="col" class="px-6 py-4 font-medium tracking-[0.26em]">Stones</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-right tracking-[0.26em]">Quantity (carat)</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-right tracking-[0.26em]">Purchase Price</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-right tracking-[0.26em]">Market Selling Price</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-right tracking-[0.26em]">Profit / Carat</th>
+                    <th scope="col" class="px-6 py-4 font-medium text-right tracking-[0.26em]">Total Profit</th>
                   </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-200 text-[16px] leading-[24px] tracking-[-0.1px] text-[#0F172A]">
-                  <tr>
-                    <td class="px-6 py-5 font-semibold uppercase text-[#0F172A]">Grandidierite</td>
-                    <td class="px-6 py-5 text-right text-[#0F172A]">12,050</td>
-                    <td class="px-6 py-5 text-right text-[#0F172A]">$19,690</td>
-                    <td class="px-6 py-5 text-right text-[#0F172A]">$21,500</td>
-                    <td class="px-6 py-5 text-right text-[#0F172A]">$1,810</td>
-                    <td class="px-6 py-5 text-right font-semibold text-[#0047C1]">$21,810,500</td>
+                <tbody class="divide-y divide-[#0047C1]/10 bg-[#F8FAFF] text-[16px] leading-[24px] tracking-[-0.05em]">
+                  <tr class="font-medium">
+                    <td class="px-6 py-5 font-semibold uppercase text-[#0B1120]" id="verify-stone-name">—</td>
+                    <td class="px-6 py-5 text-right text-[#0B1120]" id="verify-delivered-quantity">—</td>
+                    <td class="px-6 py-5 text-right text-[#0B1120]" id="verify-purchase-price">—</td>
+                    <td class="px-6 py-5 text-right text-[#0B1120]" id="verify-market-price">—</td>
+                    <td class="px-6 py-5 text-right text-[#0B1120]" id="verify-profit-per-carat">—</td>
+                    <td class="px-6 py-5 text-right font-semibold text-[#0047C1]" id="verify-total-profit">—</td>
                   </tr>
                 </tbody>
                 <tfoot>
-                  <tr class="bg-[#0F172A] text-white">
-                    <th scope="row" colspan="5" class="px-6 py-4 text-left text-[16px] font-semibold uppercase tracking-[0.28em]">
+                  <tr class="bg-[#0B1120] text-white">
+                    <th scope="row" colspan="5" class="px-6 py-4 text-left text-[16px] font-semibold uppercase tracking-[0.24em]">
                       Net Profit Statement
                     </th>
-                    <td class="px-6 py-4 text-right text-[18px] font-semibold">$21,810,500</td>
+                    <td class="px-6 py-4 text-right text-[18px] font-semibold" id="verify-total-profit-footer">—</td>
                   </tr>
                 </tfoot>
               </table>
             </div>
           </div>
 
-          <div class="space-y-4 rounded-none border border-[#0047C1]/25 bg-white p-6">
-            <p class="text-[24px] font-semibold uppercase leading-[30px] text-[#0047C1]">Assurance Notes</p>
-            <p class="text-[16px] leading-[24px] tracking-[-0.1px] text-[#0F172A]">
-              This contract dossier consolidates the audited distribution of 12,050 carats of premium Grandidierite gemstones. All valuations mirror current market comparables and align with JLX Gemstones’ ethical sourcing commitments. For further clarification, contact our corporate desk at <a class="text-[#0047C1] underline" href="mailto:hello@jlxgemstones.com">hello@jlxgemstones.com</a>.
+          <div class="space-y-4 rounded-none border border-[#0047C1] bg-[#0047C1] p-6 text-white">
+            <p class="text-[24px] font-semibold uppercase leading-[30px]" id="verify-assurance-title">
+              Assurance Notes
+            </p>
+            <p class="text-[16px] leading-[24px] tracking-[-0.05em]" id="verify-assurance-body">
+              Submit a contract reference to review assurance notes tied to the dossier.
             </p>
           </div>
         </div>
@@ -446,6 +448,7 @@
         </div>
       </div>
     </footer>
-    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/js/main.js"></script>
+    <script type="module" src="/src/js/verify.js"></script>
   </body>
 </html>

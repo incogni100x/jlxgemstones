@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - GeoSyn</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0047C1',
+                        midnight: '#0B1120',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans min-h-screen">
+    <header class="bg-midnight text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <img src="/logofooter.svg" alt="GeoSyn Logo" class="h-10 sm:h-12 w-auto">
+                <div>
+                    <p class="uppercase tracking-[0.35em] text-white/60 text-xs">Admin Console</p>
+                    <h1 class="text-xl sm:text-2xl font-semibold">Operations Dashboard</h1>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 bg-white/5 rounded-lg px-3 py-2">
+                <div class="text-xs sm:text-sm text-white/80">
+                    <p class="font-medium text-white/90">Signed in as</p>
+                    <p id="admin-user-email" class="text-white break-all"></p>
+                </div>
+                <button id="admin-logout-btn" class="inline-flex items-center justify-center rounded-md border border-white/20 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-midnight focus:ring-white">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+        <section class="bg-white border border-slate-200 rounded-xl shadow-sm">
+            <div class="border-b border-slate-200">
+                <nav class="flex h-12">
+                    <button data-tab-target="team" class="tab-button active flex-1 text-sm font-semibold uppercase tracking-[0.2em] text-primary border-b-2 border-primary">
+                        Team Roles
+                    </button>
+                    <button data-tab-target="contact" class="tab-button flex-1 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 border-b-2 border-transparent hover:text-primary">
+                        Contact & Codes
+                    </button>
+                </nav>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-8">
+                <div data-tab-panel="team">
+                    <div class="mb-6">
+                        <h2 class="text-lg sm:text-xl font-semibold text-slate-900">Add new team role</h2>
+                        <p class="text-sm text-slate-500 mt-1">Upload an image, add a role title and a short description. Entries appear immediately below.</p>
+                    </div>
+
+                    <form id="role-form" class="grid grid-cols-1 lg:grid-cols-[280px,1fr] gap-6">
+                        <div class="space-y-4">
+                            <label class="block">
+                                <span class="block text-sm font-medium text-slate-700 mb-2">Role image</span>
+                                <input type="file" name="roleImage" id="role-image" accept="image/*" class="block w-full text-sm text-slate-700 file:mr-4 file:rounded-md file:border-0 file:bg-primary file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-[#00379A]">
+                                <span class="mt-2 block text-xs text-slate-400">Recommended size: 400×400px. JPG or PNG up to 5MB.</span>
+                            </label>
+                            <p class="text-xs text-slate-400">Upload is required for new profiles. Editing an existing profile keeps the current photo.</p>
+                        </div>
+
+                        <div class="space-y-5">
+                            <input type="hidden" id="roleId" name="roleId">
+                            <div>
+                                <label for="memberName" class="block text-sm font-medium text-slate-700 mb-2">Team member name *</label>
+                                <input type="text" id="memberName" name="memberName" required class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="Jordan Ellis">
+                            </div>
+
+                            <div>
+                                <label for="memberRole" class="block text-sm font-medium text-slate-700 mb-2">Role / title *</label>
+                                <input type="text" id="memberRole" name="memberRole" required class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="Senior Mining Engineer">
+                            </div>
+
+                            <div>
+                                <label for="memberDescription" class="block text-sm font-medium text-slate-700 mb-2">Bio / description *</label>
+                                <textarea id="memberDescription" name="memberDescription" rows="5" required class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="Provide a short overview of their expertise."></textarea>
+                            </div>
+
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                                <p id="role-form-status" class="text-sm text-slate-500"></p>
+                                <div class="flex items-center gap-3">
+                                    <button type="button" id="cancel-edit-btn" class="hidden rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100">Cancel edit</button>
+                                    <button type="submit" id="role-submit-btn" class="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#00379A] focus:outline-none focus:ring-2 focus:ring-primary/30">
+                                        Save role
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <section class="mt-10">
+                        <header class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-slate-900">Existing roles</h3>
+                            <span id="roles-loading-state" class="hidden text-sm text-slate-500">Loading...</span>
+                        </header>
+                        <div id="roles-container" class="grid gap-4"></div>
+                    </section>
+                </div>
+
+                <div data-tab-panel="contact" class="hidden">
+                    <div class="space-y-8">
+                        <!-- Contract Details Form -->
+                        <div>
+                            <div class="mb-5">
+                                <h2 class="text-lg sm:text-xl font-semibold text-slate-900">Contract details</h2>
+                                <p class="text-sm text-slate-500 mt-1">Fill in the contract information. A unique partner UID will be created automatically.</p>
+                            </div>
+
+                            <form id="contract-form" class="space-y-6">
+                                <input type="hidden" id="contractOrderId" name="contractOrderId">
+                                <!-- Basic Information -->
+                                <div class="space-y-4">
+                                    <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-600">Basic Information</h3>
+                                    
+                                    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            Date *
+                                            <input type="date" id="contractDate" name="contractDate" required class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30">
+                                        </label>
+                                        <label class="block text-sm font-medium text-slate-700 lg:col-span-2">
+                                            User/Item Image
+                                            <input type="file" id="contractImage" name="contractImage" accept="image/*" class="mt-2 block w-full text-sm text-slate-700 file:mr-4 file:rounded-md file:border-0 file:bg-primary file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-[#00379A]">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Partner Information -->
+                                <div class="space-y-4">
+                                    <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-600">Partner Information</h3>
+                                    
+                                    <div class="grid gap-4 sm:grid-cols-2">
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            Partner Name *
+                                            <input type="text" id="contractPartnerName" name="contractPartnerName" required class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="Walter Phillips">
+                                        </label>
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            ISO *
+                                            <input type="text" id="contractISO" name="contractISO" required class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="516807:2025">
+                                        </label>
+                                    </div>
+
+                                    <div id="contractPartnerCodeWrap" class="hidden rounded-lg border border-primary/20 bg-primary/5 px-4 py-3 text-sm text-primary">
+                                        Partner UID: <span id="contractPartnerCodeValue" class="font-semibold"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Staff Information -->
+                                <div class="space-y-4">
+                                    <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-600">Staff Information</h3>
+                                    
+                                    <div class="grid gap-4 sm:grid-cols-2">
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            Sales Person *
+                                            <input type="text" id="contractSalesPerson" name="contractSalesPerson" required class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="Lawrence Andre">
+                                        </label>
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            Manager in Charge *
+                                            <input type="text" id="contractManager" name="contractManager" required class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="Sarah Alexandre">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Payment & Distribution -->
+                                <div class="space-y-4">
+                                    <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-600">Payment & Distribution</h3>
+                                    
+                                    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            Payment Type *
+                                            <select id="contractPaymentType" name="contractPaymentType" required class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30">
+                                                <option value="">Select payment type</option>
+                                                <option value="Bank Transfer">Bank Transfer</option>
+                                                <option value="Credit Card">Credit Card</option>
+                                                <option value="Cash">Cash</option>
+                                                <option value="Check">Check</option>
+                                                <option value="Wire Transfer">Wire Transfer</option>
+                                            </select>
+                                        </label>
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            Delivered quantity (carat) *
+                                            <input type="text" id="contractDelivered" name="contractDelivered" required class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="e.g. 12,050">
+                                            <span class="mt-1 block text-xs text-slate-400">Quantity delivered / receipted to date.</span>
+                                        </label>
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            External Employees *
+                                            <input type="number" id="contractExternalEmployees" name="contractExternalEmployees" required class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="132">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <!-- Stone Details -->
+                                <div class="space-y-4">
+                                    <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-slate-600">Stone Details</h3>
+                                    
+                                    <div class="grid gap-4 sm:grid-cols-2">
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            Stone Name *
+                                            <input type="text" id="contractStoneName" name="contractStoneName" required class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="Grandidierite">
+                                        </label>
+                                    </div>
+
+                                    <div class="grid gap-4 sm:grid-cols-2">
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            Purchase Price *
+                                            <input type="text" id="contractPurchasePrice" name="contractPurchasePrice" required class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="19,690">
+                                        </label>
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            Market Selling Price *
+                                            <input type="text" id="contractMarketPrice" name="contractMarketPrice" required class="mt-2 w-full rounded-lg border border-slate-300 px-4 py-3 text-sm text-slate-900 shadow-sm focus:border-primary focus:ring-2 focus:ring-primary/30" placeholder="21,500">
+                                        </label>
+                                    </div>
+
+                                    <div class="grid gap-4 sm:grid-cols-2">
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            Profit Made per Carat
+                                            <input type="text" id="contractProfitPerCarat" name="contractProfitPerCarat" readonly class="mt-2 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-900 shadow-sm">
+                                        </label>
+                                        <label class="block text-sm font-medium text-slate-700">
+                                            Total Profit
+                                            <input type="text" id="contractTotalProfit" name="contractTotalProfit" readonly class="mt-2 w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-900 shadow-sm">
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col sm:flex-row sm:justify-end sm:items-center gap-3">
+                                    <p id="contract-form-status" class="text-sm text-slate-500 flex-1"></p>
+                                    <button type="button" id="contract-reset-btn" class="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100">Clear form</button>
+                                    <button type="submit" id="contract-submit-btn" class="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#00379A] focus:outline-none focus:ring-2 focus:ring-primary/30">Save contract</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <section class="mt-10">
+                            <header class="mb-4 flex items-center justify-between">
+                                <h3 class="text-lg font-semibold text-slate-900">Existing orders</h3>
+                                <span id="orders-loading-state" class="hidden text-sm text-slate-500">Loading...</span>
+                            </header>
+                            <div id="orders-container" class="grid gap-4"></div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contract success overlay -->
+    <div id="contract-success-overlay" class="fixed inset-0 z-[999] hidden items-center justify-center bg-slate-900/70 px-4">
+        <div class="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl">
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+            <h2 class="text-xl font-semibold text-slate-900">Contract created</h2>
+            <p class="mt-2 text-sm text-slate-600">Partner code</p>
+            <p id="contract-success-partner" class="mt-1 text-2xl font-semibold text-primary"></p>
+            <div class="mt-6 flex gap-3">
+                <button id="contract-success-copy" class="flex-1 rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary/10">Copy code</button>
+                <button id="contract-success-close" class="flex-1 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#00379A]">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/js/admin.js"></script>
+</body>
+</html>
+

@@ -7,6 +7,8 @@
   "redirects": [
     { "source": "/about/", "destination": "/about", "permanent": true },
     { "source": "/verify/", "destination": "/verify", "permanent": true },
-    { "source": "/menu/", "destination": "/menu", "permanent": true }
+    { "source": "/menu/", "destination": "/menu", "permanent": true },
+    { "source": "/admin-login/", "destination": "/admin-login", "permanent": true },
+    { "source": "/admin/", "destination": "/admin.html", "permanent": true }
   ]
 }
