@@ -39,11 +39,11 @@
 <body class="bg-slate-100 font-sans min-h-screen">
     <header class="bg-midnight text-white">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div class="flex items-center gap-4">
-                <img src="/logofooter.svg" alt="GeoSyn Logo" class="h-10 sm:h-12 w-auto">
-                <div>
+            <div class="flex w-full flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4">
+                <img src="/logo.svg" alt="GeoSyn Logo" class="h-10 w-auto sm:h-12">
+                <div class="text-left">
                     <p class="uppercase tracking-[0.35em] text-white/60 text-xs">Admin Console</p>
-                    <h1 class="text-xl sm:text-2xl font-semibold">Operations Dashboard</h1>
+                    <h1 class="text-xl font-semibold leading-tight sm:text-2xl">Operations Dashboard</h1>
                 </div>
             </div>
             <div class="flex items-center gap-3 bg-white/5 rounded-lg px-3 py-2">
@@ -66,7 +66,7 @@
                         Team Roles
                     </button>
                     <button data-tab-target="contact" class="tab-button flex-1 text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 border-b-2 border-transparent hover:text-primary">
-                        Contact & Codes
+                        Create Contract
                     </button>
                 </nav>
             </div>
@@ -254,7 +254,7 @@
                                 <div class="flex flex-col sm:flex-row sm:justify-end sm:items-center gap-3">
                                     <p id="contract-form-status" class="text-sm text-slate-500 flex-1"></p>
                                     <button type="button" id="contract-reset-btn" class="rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100">Clear form</button>
-                                    <button type="submit" id="contract-submit-btn" class="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#00379A] focus:outline-none focus:ring-2 focus:ring-primary/30">Save contract</button>
+                                    <button type="submit" id="contract-submit-btn" class="inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#00379A] focus:outline-none focus:ring-2 focus:ring-primary/30">Save contract</button>
                                 </div>
                             </form>
                         </div>
