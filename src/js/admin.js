@@ -300,10 +300,10 @@ function initTabs() {
         btn.classList.toggle('active', btn === button);
         if (btn.classList.contains('active')) {
           btn.classList.add('text-primary', 'border-primary');
-          btn.classList.remove('text-slate-500');
+          btn.classList.remove('text-slate-500', 'border-transparent');
         } else {
           btn.classList.remove('text-primary', 'border-primary');
-          btn.classList.add('text-slate-500');
+          btn.classList.add('text-slate-500', 'border-transparent');
         }
       });
 
