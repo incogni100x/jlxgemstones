@@ -2,7 +2,9 @@
   "rewrites": [
     { "source": "/about", "destination": "/about.html" },
     { "source": "/verify", "destination": "/verify.html" },
-    { "source": "/menu", "destination": "/menu.html" }
+    { "source": "/menu", "destination": "/menu.html" },
+    { "source": "/admin-login", "destination": "/admin-login.html" },
+    { "source": "/admin", "destination": "/admin.html" }
   ],
   "redirects": [
     { "source": "/about/", "destination": "/about", "permanent": true },
