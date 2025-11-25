@@ -160,15 +160,22 @@ function populateResults(order) {
       elements.assuranceTitle.textContent = `Assurance · ${partnerLabel}`;
     }
     if (elements.assuranceBody) {
-      const emailLink = document.createElement('a');
-      emailLink.href = 'mailto:hello@jlxgemstones.com';
-      emailLink.textContent = 'hello@jlxgemstones.com';
-      emailLink.className = 'underline text-white';
+      const consultEmailLink = document.createElement('a');
+      consultEmailLink.href = 'mailto:consult@jlxgemstones.com';
+      consultEmailLink.textContent = 'consult@jlxgemstones.com';
+      consultEmailLink.className = 'underline text-white';
+
+      const infoEmailLink = document.createElement('a');
+      infoEmailLink.href = 'mailto:info@jlxgemstones.com';
+      infoEmailLink.textContent = 'info@jlxgemstones.com';
+      infoEmailLink.className = 'underline text-white';
 
       elements.assuranceBody.textContent = '';
       elements.assuranceBody.append(
-        `This dossier confirms the audited distribution of ${quantityLabel} of ${stoneLabel}, reviewed under JLX Gemstones’ compliance program. Market valuations align with our current oversight cycle. For clarification, contact our corporate desk at `,
-        emailLink,
+        `This dossier confirms the audited distribution of ${quantityLabel} of ${stoneLabel}, reviewed under JLX Gemstones' compliance program. Market valuations align with our current oversight cycle. For clarification, contact our corporate desk at `,
+        consultEmailLink,
+        ' or ',
+        infoEmailLink,
         '.',
       );
     }
